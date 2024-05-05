@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap');
+@keyframes login-animation {
+    from {
+        margin-left: -200%;
+    }
+    to {
+        margin-left: 10px;
+    }
+}
+
+html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    min-height: 100%;
+    min-width: 100%;
+    animation-name: login-animation;
+    animation-duration: 1s;
+}
+
+.ikon {
+    width: 40px;
+    height: 40px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+input {
+    font-family: 'JetBrains Mono', monospace;
+    height: 40px;
+    width: 300px;
+    border: 1px solid black;
+    border-radius: 5px;
+    transition-duration: 0.25s;
+}
+
+button {
+    font-family: 'JetBrains Mono', monospace;
+    background-color: #68cab3;
+    width: 80px;
+    height: 45px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-left: 10px;
+    transition-duration: 0.25s;
+}
+
+#input-username,
+#input-password {
+    margin-top: 20px;
+}
+
+#left-div {
+    margin-top: -150px;
+    margin-left: -8px;
+    min-width: 50%;
+    height: 150vh;
+    background-image: url('../img/background.jpg');
+    color: #ffffff;
+    font-size: xx-large;
+    text-align: center;
+}
+
+#left-title-div {
+    margin-top: -50px;
+    height: 150vh;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+#right-div {
+    font-size: large;
+    margin-left: 7%;
+    margin-top: 10%;
+    flex: 1;
+}
+
+#right-title-div {
+    left: 850px;
+    top: 170px;
+}
+
+#seowon {
+    margin-top: 45%;
+}
+
+.alert {
+    position: absolute;
+    font-size: 17px;
+    margin-left: 50px;
+    margin-top: 0px;
+    margin-bottom: -30px;
+    color: red;
+}
+
+button:hover {
+    background-color: #71d9c1;
+    box-shadow: 2px 3px 2px 0px grey;
+    transform: translate(2px, 2px);
+    transition-duration: 0.25s;
+}
+
+input:focus {
+    box-shadow: 2px 3px 2px 0px grey;
+    transform: translate(2px, 2px);
+    transition-duration: 0.25s;
+}
+
+input:hover {
+    box-shadow: 2px 3px 2px 0px grey;
+    transform: translate(2px, 2px);
+    transition-duration: 0.25s;
+}
+
+#seowon:hover {
+    transform: scale(1.01, 1.01);
+    transition-duration: 0.25s;
+}
+
+#seowon {
+    transition-duration: 0.25s;
+}
+
+button:focus {
+    background-color: #71d9c1;
+    box-shadow: 2px 3px 2px 0px grey;
+    transform: translate(2px, 2px);
+    transition-duration: 0.25s;
+}

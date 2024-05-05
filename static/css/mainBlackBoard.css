@@ -1,0 +1,141 @@
+@font-face {
+    font-family: Chalk;
+    src: url(../font/HakgyoansimBunpilR.ttf);
+}
+@keyframes header-enter-animation {
+    from {
+        margin-top: -10%;
+    }
+    to {
+        margin-top: 0%;
+    }
+}
+@keyframes jubun-enter-animation {
+    from {
+        margin-left: -20%;
+    }
+    to {
+        margin-left: 2%;
+    }
+}
+
+html {
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    position: relative;
+    font-family: Chalk;
+    margin: 0px;
+    width: 100%;
+    background-color: rgb(77, 119, 107);
+    -ms-overflow-style: none;
+}
+
+header {
+    animation-name: header-enter-animation;
+    animation-duration: 1s;
+    position: fixed;
+    width: 100%;
+    height: 10%;
+    background-color: rgba(66, 102, 92, 0.7);
+}
+
+#logIn {
+    position: relative;
+    margin: 0;
+    margin-left: -2%;
+    width: 100%;
+    height: 100%;
+    text-align: end;
+}
+
+#logIn > a {
+    position: relative;
+    text-decoration: none;
+    font-size: 30px;
+    color: white;
+}
+
+#logInText:hover {
+    color: rgb(218, 233, 188);
+}
+
+#logInText {
+    right: 1%;
+    top: 20px;
+}
+
+#jubun {
+    animation-name: jubun-enter-animation;
+    animation-duration: 1s;
+    width: 300px;
+    height: 50%;
+    position: relative;
+    margin: 0px;
+    margin-left: 2%;
+    top: 14vh; 
+    display: grid;
+    grid-template-areas: "title empty" "firstNumber firstName" "secondNumber secondName";
+    grid-template-columns: repeat(2, 120px);
+    grid-template-rows: repeat(3, 80px);
+    align-items: center;
+    justify-items: center;
+}
+
+#jubun > p {
+    margin: 0px;
+    color: white;
+    font-size: 30px;
+}
+
+#jubunTitle {
+    grid-area: title;
+}
+
+#firstNumber {
+    grid-area: firstNumber;
+}
+
+#firstName {
+    grid-area: firstName;
+}
+
+#secondNumber {
+    grid-area: secondNumber;
+}
+
+#secondName {
+    grid-area: secondName;
+}
+
+#cleanInstead {
+    position: relative;
+    margin: 0px;
+    margin-left: 4%;
+    top: 20vh;
+    height: 10vh;
+    width: 300px;
+}
+
+#cleaningApplicationLable {
+    color: white;
+    font-size: 30px;
+}
+
+#cleaningApplication {
+    margin: 0;
+    margin-top: 4vh;
+    height: 4vh;
+    width: 80px;
+    border-radius: 5px;
+}
+
+#submitCleaningApplication {
+    margin: 0;
+    height: 4vh;
+    width: 50px;
+    border-radius: 5px;
+}
