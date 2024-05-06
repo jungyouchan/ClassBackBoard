@@ -50,10 +50,10 @@ function checkTime() {
 
 const connection = mysql.createConnection({
     host: "svc.sel5.cloudtype.app",
-    port: "32001",
+    port: "30199",
     user: "root",
     password: "3edcCDE#",
-    database: "classBlackBoard",
+    database: "classblackboard",
     multipleStatements: true
 });
 
@@ -61,7 +61,7 @@ connection.connect();
 
 
 app.get('/', function (req, res) {
-    connection.query("SELECT * from classBlackBoard.cleaningRecords", (error, row) => {
+    connection.query("SELECT * from classblackboard.cleaningRecords", (error, row) => {
         if (error) throw error;
         var nowDate = new Date();
         var lastDate = row.at(-1).date;
@@ -117,11 +117,11 @@ app.post('/submit', function (req, res) {
     var Time = checkTime();
     let id = req.body;
     console.log(id);
-    let sql = `INSERT INTO classBlackBoard.cleaningRecords (name, number, date) VALUES ('${id.select}', ${classMemberName[classMemberName.findIndex(obj => obj.name == id.select)].number}, '${Time}');`;
+    let sql = `INSERT INTO classblackboard.cleaningRecords (name, number, date) VALUES ('${id.select}', ${classMemberName[classMemberName.findIndex(obj => obj.name == id.select)].number}, '${Time}');`;
     connection.query(sql, (err) => {
         if (err) throw err;
     });
-    connection.query(` SELECT * FROM classBlackBoard.cleaningRecords ORDER BY date ASC;`, (err) => {
+    connection.query(` SELECT * FROM classblackboard.cleaningRecords ORDER BY date ASC;`, (err) => {
         if (err) throw err;
     })
     console.log(sql);
