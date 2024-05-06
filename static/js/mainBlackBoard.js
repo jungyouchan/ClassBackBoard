@@ -1,7 +1,10 @@
 onload = (e) => {
     document.getElementById("cleaningApplicationForm").addEventListener("submit", (e) => {
+        //e.preventDefault();
+        console.log(document.getElementById("cleaningApplicationForm").select.value);
+    })
+    document.getElementById("logInText").addEventListener("click", (e) => {
         e.preventDefault();
-        submitCleaningApplication();
     })
     setInterval(jubunChange, 1000);
     addClassNameInSelect();
@@ -65,10 +68,4 @@ function addClassNameInSelect() {
     for (var i in classMemberName) {
         cleaningApplication.innerHTML += `<option value="${classMemberName[i].name}">${classMemberName[i].name}</option>`
     }
-}
-
-function submitCleaningApplication() {
-    var form = document.getElementById("cleaningApplicationForm");
-    var value = form.select.value;
-    console.log(value);
 }
