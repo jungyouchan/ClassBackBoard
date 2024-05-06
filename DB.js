@@ -3,6 +3,7 @@ var mysql = require('mysql2');
 var app = express();
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(express.static('static'));
 
 
 var classMemberName = [
@@ -47,7 +48,7 @@ const connection = mysql.createConnection({
 connection.connect();
 
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + "index.html");
+    res.sendFile(__dirname + "/index.html");
 });
 
 app.post('/submit', function (req, res) {
