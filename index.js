@@ -62,14 +62,14 @@ connection.connect();
 
 app.get('/', function (req, res) {
     connection.query("SELECT * from classblackboard.cleaningRecords", (error, row) => {
-        if (error) console.log(error);
+        if (error) throw error;
         var nowDate = new Date();
         var lastDate = row.at(-1).date;
         var yearBool = nowDate.getFullYear() == lastDate.getFullYear();
         var monthBool = nowDate.getMonth() == lastDate.getMonth();
         var dateBool = nowDate.getDate() == lastDate.getDate();
         console.log(row);
-        var nowApplication = !yearBool || !monthBool || !dateBool ? false : row.at(-1).name;
+        var nowApplication = !row || !yearBool || !monthBool || !dateBool ? false : row.at(-1).name;
         res.send(`
     <!DOCTYPE html>
     <html lang="en">
@@ -118,11 +118,11 @@ app.post('/submit', function (req, res) {
     let id = req.body;
     console.log(id);
     let sql = `INSERT INTO classblackboard.cleaningRecords (name, number, date) VALUES ('${id.select}', ${classMemberName[classMemberName.findIndex(obj => obj.name == id.select)].number}, '${Time}');`;
-    connection.query(sql, (error) => {
-        if (error) console.log(error);
+    connection.query(sql, (err) => {
+        if (err) throw err;
     });
-    connection.query(` SELECT * FROM classblackboard.cleaningRecords ORDER BY date ASC;`, (error) => {
-        if (error) console.log(error);
+    connection.query(` SELECT * FROM classblackboard.cleaningRecords ORDER BY date ASC;`, (err) => {
+        if (err) throw err;
     })
     console.log(sql);
     res.redirect('/');
