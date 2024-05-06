@@ -4,7 +4,7 @@
 }
 @keyframes header-enter-animation {
     from {
-        margin-top: -20%;
+        margin-top: -100%;
     }
     to {
         margin-top: 0%;
@@ -12,10 +12,19 @@
 }
 @keyframes jubun-enter-animation {
     from {
-        margin-left: -40%;
+        margin-left: -100%;
     }
     to {
         margin-left: 2%;
+    }
+}
+
+@keyframes show-name-animation {
+    form {
+        right: -200vw;
+    }
+    ro {
+        right: -80vw;
     }
 }
 
@@ -112,6 +121,8 @@ header {
 }
 
 #cleanInstead {
+    animation-name: jubun-enter-animation;
+    animation-duration: 1s;
     position: relative;
     margin: 0px;
     margin-left: 4%;
@@ -141,6 +152,8 @@ header {
 }
 
 #showName {
+    animation-name: show-name-animation;
+    animation-duration: 1s;
     position: relative;
     margin: 0;
     color: white;
