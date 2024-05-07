@@ -1,14 +1,15 @@
-onload = (e) => {
+onload = () => {
+    addClassNameInSelect();
     document.getElementById("cleaningApplicationForm").addEventListener("submit", (e) => {
         //e.preventDefault();
         console.log(document.getElementById("cleaningApplicationForm").select.value);
-        return (confirm("신청하겠습니까?"))
     })
     document.getElementById("logInText").addEventListener("click", (e) => {
         e.preventDefault();
     })
     setInterval(jubunChange, 1000);
-    addClassNameInSelect();
+    setDisabledOption();
+
 };
 
 
@@ -43,6 +44,14 @@ const classMemberName = [
     { number: 10328, name: "황성민" }
 ];
 
+function setDisabledOption() {
+    var disabledArr = document.getElementById('dataTransfer').innerHTML.split(",");
+    disabledArr.forEach((number) => {
+        var element = document.getElementById(number);
+        element.disabled = true;
+    });
+}
+
 function jubunChange() {
     let standardDay = new Date("2024-03-4"); //기준 시간
     let firstNumber = document.getElementById("firstNumber"); //주번 번호 1
@@ -67,6 +76,6 @@ function jubunChange() {
 function addClassNameInSelect() {
     const cleaningApplication = document.getElementById("cleaningApplication");
     for (var i in classMemberName) {
-        cleaningApplication.innerHTML += `<option value="${classMemberName[i].name}">${classMemberName[i].name}</option>`
+        cleaningApplication.innerHTML += `<option id="${classMemberName[i].number}" value="${classMemberName[i].name}">${classMemberName[i].name}</option>`
     }
 }

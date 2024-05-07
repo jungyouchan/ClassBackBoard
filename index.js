@@ -69,7 +69,17 @@ app.get('/', function (req, res) {
         var monthBool = nowDate.getMonth() == lastDate.getMonth();
         var dateBool = nowDate.getDate() == lastDate.getDate();
         console.log(row);
-        var nowApplication = !row || !yearBool || !monthBool || !dateBool ? false : row.at(-1).name;
+        var nowApplication = !yearBool || !monthBool || !dateBool ? false : row.at(-1).name;
+
+        var disabledArr = []
+        row.forEach((value) => {
+            if (value.date.getMonth == nowDate.getMonth) {
+                disabledArr.push(value.number);
+            }
+        })
+
+
+
         res.send(`
     <!DOCTYPE html>
     <html lang="en">
@@ -106,6 +116,7 @@ app.get('/', function (req, res) {
                     <input type="submit" value="신청" id="submitCleaningApplication" name="submit"  ${nowApplication ? "disabled" : ""}>
                 </form>
             </div>
+            <div id="dataTransfer" style="visibility: hidden">${disabledArr}</div>
         </body>
     </html>
     `)
