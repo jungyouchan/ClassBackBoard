@@ -2,6 +2,7 @@ onload = (e) => {
     document.getElementById("cleaningApplicationForm").addEventListener("submit", (e) => {
         //e.preventDefault();
         console.log(document.getElementById("cleaningApplicationForm").select.value);
+        return (confirm("신청하겠습니까?"))
     })
     document.getElementById("logInText").addEventListener("click", (e) => {
         e.preventDefault();
