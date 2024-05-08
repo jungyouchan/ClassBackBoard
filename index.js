@@ -128,15 +128,42 @@ app.post('/submit', function (req, res) {
     var Time = checkTime();
     let id = req.body;
     console.log(id);
-    let sql = `INSERT INTO classblackboard.cleaningRecords (name, number, date) VALUES ('${id.select}', ${classMemberName[classMemberName.findIndex(obj => obj.name == id.select)].number}, '${Time}');`;
-    connection.query(sql, (err) => {
-        if (err) throw err;
+
+
+    connection.query("SELECT * from classblackboard.cleaningRecords", (error, row) => {
+        if (error) throw error;
+        var nowDate = new Date();
+        var lastDate = row.at(-1).date;
+        var yearBool = nowDate.getFullYear() == lastDate.getFullYear();
+        var monthBool = nowDate.getMonth() == lastDate.getMonth();
+        var dateBool = nowDate.getDate() == lastDate.getDate();
+        console.log(yearBool || monthBool || dateBool);
+        if (yearBool && monthBool && dateBool) {
+            return res.send(`
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Document</title>
+            </head>
+            <body>
+                <script>
+                alert("다른 사람이 먼저 신청했습니다.");
+                window.location.href = "https://port-0-classbackboard-754g42alv1wvdhh.sel5.cloudtype.app/";
+                </script>
+            </body>
+            </html>
+            `);
+        } else {
+            let sql = `INSERT INTO classblackboard.cleaningRecords (name, number, date) VALUES ('${id.select}', ${classMemberName[classMemberName.findIndex(obj => obj.name == id.select)].number}, '${Time}');`;
+            connection.query(sql, (err) => {
+                if (err) throw err;
+            });
+            console.log(sql);
+            res.redirect('/');
+        }
     });
-    connection.query(` SELECT * FROM classblackboard.cleaningRecords ORDER BY date ASC;`, (err) => {
-        if (err) throw err;
-    })
-    console.log(sql);
-    res.redirect('/');
 });
 
 
