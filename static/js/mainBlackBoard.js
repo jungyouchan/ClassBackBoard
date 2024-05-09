@@ -15,7 +15,7 @@ onload = () => {
 
 
 const classMemberName = [
-    { number: 10302, name: "김예진" },
+    { number: 10302, name: "김예린" },
     { number: 10303, name: "김지수" },
     { number: 10304, name: "박서현" },
     { number: 10305, name: "박유담" },
